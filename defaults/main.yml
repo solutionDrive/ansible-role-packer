@@ -1,2 +1,6 @@
 ---
-# defaults file for solutionDrive.packer
+packer_install_version: "1.0.0"
+packer_download_destination: "/tmp/packer_{{ packer_install_version }}.zip"
+packer_unarchive_destination: "/tmp/packer/"
+packer_execution_path: "/usr/local/bin/packer"
+packer_releases_url: "https://releases.hashicorp.com/packer/{{ packer_install_version }}/packer_{{ packer_install_version }}_darwin_amd64.zip"
