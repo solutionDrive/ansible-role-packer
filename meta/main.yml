@@ -29,8 +29,8 @@ galaxy_info:
   # (usually master) will be used.
   #github_branch:
 
-  plattforms:
-    - name: MaxOSX
+  platforms:
+    - name: MacOSX
       versions:
       - all
   #
