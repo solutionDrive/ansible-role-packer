@@ -1,0 +1,28 @@
+---
+- name: Create Plugin-Installation-Path
+  file:
+    path: "{{ packer_plugin_installation_path }}"
+    state: directory
+  failed_when: False
+  changed_when: False
+
+- name: Check Plugin-Installations
+  shell: "ls -al {{ packer_plugin_installation_path }}"
+  register: all_installed_plugins
+  failed_when: False
+  changed_when: False
+
+- name: Download Plugins
+  get_url:
+    url: "{{ item.url }}{{ item.filename }}"
+    dest: "{{ packer_plugin_download_path }}"
+  when: all_installed_plugins.stdout.find( item.name ) == -1
+  with_items: "{{ packer_plugins }}"
+
+- name: Unzip Plugins
+  unarchive:
+    remote_src: yes
+    src:  "{{ packer_plugin_download_path }}/{{ item.filename }}"
+    dest: "{{ packer_plugin_installation_path }}"
+    creates: "{{ packer_plugin_installation_path }}/{{ item.name }}"
+  with_items: "{{ packer_plugins }}"
