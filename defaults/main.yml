@@ -7,4 +7,6 @@ packer_releases_url: "https://releases.hashicorp.com/packer/{{ packer_install_ve
 packer_plugin_download_path: "/tmp"
 packer_plugin_installation_path: "~/.packer.d/plugins"
 packer_plugins: []
-# - { url: "httpfs://github.com/lmars/packer-post-processor-vagrant-s3/releases/download/1.3.3/packer-post-processor-vagrant-s3-1.3.3-darwin-amd64.zip" }
+# - name: "name-of-the-plugin"
+#   url: "download-url-to-the-archived-plugin"
+#   filename: "filename-of-the-archive"
