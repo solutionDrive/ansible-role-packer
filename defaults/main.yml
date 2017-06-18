@@ -4,7 +4,7 @@ packer_download_destination: "/tmp/packer_{{ packer_install_version }}.zip"
 packer_unarchive_destination: "/tmp/packer/"
 packer_execution_path: "/usr/local/bin/packer"
 packer_releases_url: "https://releases.hashicorp.com/packer/{{ packer_install_version }}/packer_{{ packer_install_version }}_darwin_amd64.zip"
-packer_plugin_download_path: "/tmp/"
+packer_plugin_download_path: "/tmp"
 packer_plugin_installation_path: "~/.packer.d/plugins"
 packer_plugins: []
 # - { url: "httpfs://github.com/lmars/packer-post-processor-vagrant-s3/releases/download/1.3.3/packer-post-processor-vagrant-s3-1.3.3-darwin-amd64.zip" }
