@@ -34,6 +34,22 @@ packer_releases_url: "https://releases.hashicorp.com/packer/{{ packer_install_ve
 ```
 Url to download packer
 
+```
+packer_plugin_download_path: "/tmp"
+```
+folder to download the configured plugins
+
+``` 
+packer_plugin_installation_path: "~/.packer.d/plugins"
+```
+folder where plugins have to be installed
+
+```
+packer_plugins:
+  - name: "Name-of-the-plugin-file-after-installation"
+    url:  "download-url-of-the-plugin"
+    filename: "filename-of-the-downloaded-file/archive"
+```
 Dependencies
 ------------
 None
