@@ -20,10 +20,10 @@ install:
 
 script:
   # Check the role/playbook's syntax.
-  - "ansible-playbook tests/playbook.yml --syntax-check"
+  - "ansible-playbook test/playbook.yml --syntax-check"
 
   # Test the playbook.
-  - "travis_wait 30 ansible-playbook tests/playbook.yml"
+  - "travis_wait 30 ansible-playbook test/playbook.yml"
 
   # Test the playbook's idempotence.
   - idempotence=$(mktemp)
