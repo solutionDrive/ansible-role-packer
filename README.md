@@ -10,7 +10,7 @@ Role Variables
 --------------
 
 ``` 
-packer_install_version: "1.1.3"
+packer_install_version: "1.2.2"
 ```
 Version which should be installed
 
