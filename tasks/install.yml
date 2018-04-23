@@ -29,7 +29,7 @@
     src: "{{ packer_download_destination }}"
     dest: "{{ packer_unarchive_destination }}"
     copy: no
-  when: installed_packer_version.rc != 0 || tmp_packer_version.rc != 0
+  when: installed_packer_version.rc != 0 or tmp_packer_version.rc != 0
 
 - name: Move packer for execution
   copy:
