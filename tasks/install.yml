@@ -1,32 +1,37 @@
 ---
-- name: Check Packer Version
-  shell: "packer --version | grep {{ packer_install_version }}"
-  failed_when: False
-  changed_when: False
+- name: Check installed packer version
+  shell: "packer --version | head -n1 | grep {{ packer_install_version }}"
+  failed_when: false
+  changed_when: false
   register: installed_packer_version
 
-- name: Download Packer
+- name: Check tmp packer version
+  shell: "{{ packer_unarchive_destination }}/packer --version | head -n1 | grep {{ packer_install_version }}"
+  failed_when: false
+  changed_when: false
+  register: tmp_packer_version
+
+- name: Download packer
   get_url:
     url: "{{ packer_releases_url }}"
     dest: "{{ packer_download_destination }}"
   when: installed_packer_version.rc != 0
 
-- name: Create Packer unzip dir
+- name: Create packer unzip dir
   file:
     path: "{{ packer_unarchive_destination }}"
     state: directory
     mode: 0755
   when: installed_packer_version.rc != 0
 
-- name: Unzip Packer
+- name: Unzip packer
   unarchive:
     src: "{{ packer_download_destination }}"
     dest: "{{ packer_unarchive_destination }}"
     copy: no
-    creates: "{{ packer_unarchive_destination }}/packer"
-  when: installed_packer_version.rc != 0
+  when: installed_packer_version.rc != 0 or tmp_packer_version.rc != 0
 
-- name: Move Packer for execution
+- name: Move packer for execution
   copy:
     src: "{{ packer_unarchive_destination }}/packer"
     dest: "{{ packer_execution_path }}"
