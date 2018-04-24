@@ -11,14 +11,6 @@
   changed_when: false
   register: tmp_packer_version
 
-- name: Debug installed version
-  debug:
-    msg: "Installed: {{installed_packer_version}}"
-
-- name: Debug tmp version
-  debug:
-    msg: "Installed: {{tmp_packer_version}}"
-
 - name: Download packer
   get_url:
     url: "{{ packer_releases_url }}"
